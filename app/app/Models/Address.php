@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
-}
 
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+
+}
 

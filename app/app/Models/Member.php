@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+
+    public function adress()
+    {
+        return $this->hasOne(Address::class);
+    }
 }
