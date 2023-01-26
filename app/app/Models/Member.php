@@ -13,4 +13,8 @@ class Member extends Model
     {
         return $this->hasOne(Address::class);
     }
+    
+    public function invoices(){
+        return $this->hasMany(Invoice::class);
+    }
 }
