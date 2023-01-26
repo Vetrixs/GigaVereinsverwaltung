@@ -14,5 +14,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\TicketController::class, 'index'])->name('ticket.index');
-Route::post('/create', [\App\Http\Controllers\TicketController::class, 'store'])->name('ticket.store');
