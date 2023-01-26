@@ -16,7 +16,9 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Member::class);
+            $table->foreignIdFor(Member::class)->constrained()->restrictOnDelete();
+            $table->unsignedBigInteger('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
