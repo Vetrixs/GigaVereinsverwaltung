@@ -62,7 +62,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        return Member::findOrFail($id);
     }
 
     /**
