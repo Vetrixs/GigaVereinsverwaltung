@@ -18,6 +18,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Member::class)->constrained()->restrictOnDelete();
             $table->unsignedBigInteger('price');
+            $table->string("description");
+            $table->integer("invoice_type");
             $table->softDeletes();
             $table->timestamps();
         });

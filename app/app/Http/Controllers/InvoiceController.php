@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
 use Illuminate\Http\Request;
 
-class MemberController extends Controller
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
-        return inertia("Member/Index.vue", compact('members'));
+        //
     }
 
     /**
@@ -36,23 +34,7 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $member_name = $request->input('name');
-        $member_phone_number = $request->input('phone_number');
-        $member_email_address = $request->input('email_address');
-        $member_is_employed = $request->input('is_employed');
-        $member_birthday = $request->input('birthday');
-        $member_iban = $request->input('iban');
-
-        $member = Member::create([
-            'name' => $member_name,
-            'phone_number' => $member_phone_number,
-            'email_address' => $member_email_address,
-            'is_employed' => $member_is_employed,
-            'birthday' => $member_birthday,
-            'iban' => $member_iban,
-        ]);
-        // TODO: add try catch or something like that
-        return response("", 200);
+        //
     }
 
     /**
@@ -63,7 +45,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        return Member::findOrFail($id);
+        //
     }
 
     /**
