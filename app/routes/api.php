@@ -25,4 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('member', [MemberController::class, 'index'])->name('member.index');
+Route::get('member/{id}', [MemberController::class, 'show'])->name('member.show');
 Route::post('member', [MemberController::class, 'store'])->name('member.store');
