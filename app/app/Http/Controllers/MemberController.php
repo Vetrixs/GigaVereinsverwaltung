@@ -25,7 +25,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        $member = new Member();
+        return inertia("Member/Create.vue", compact("member"));
     }
 
     /**
