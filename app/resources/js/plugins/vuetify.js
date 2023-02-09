@@ -9,7 +9,7 @@ const options = {
       default: 'light',
       themes: {
          light: {
-            primary: '#e91e63',
+            primary: '#660066',
             secondary: '#673ab7',
             accent: '#9c27b0',
             error: '#f44336',

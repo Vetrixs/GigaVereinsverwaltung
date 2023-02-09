@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MemberRequest;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,15 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        $member = new Member([
+            'name' => null,
+            'phone_number' => null,
+            'email_address' => null,
+            'iban' => null,
+            'birthday' => null,
+            'is_employed' => false
+        ]);
+        return inertia("Member/Create.vue", compact("member"));
     }
 
     /**
@@ -34,25 +43,12 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MemberRequest $request)
     {
-        $member_name = $request->input('name');
-        $member_phone_number = $request->input('phone_number');
-        $member_email_address = $request->input('email_address');
-        $member_is_employed = $request->input('is_employed');
-        $member_birthday = $request->input('birthday');
-        $member_iban = $request->input('iban');
 
-        $member = Member::create([
-            'name' => $member_name,
-            'phone_number' => $member_phone_number,
-            'email_address' => $member_email_address,
-            'is_employed' => $member_is_employed,
-            'birthday' => $member_birthday,
-            'iban' => $member_iban,
-        ]);
-        // TODO: add try catch or something like that
-        return response("", 200);
+        $member = new Member($request->validated());
+        $member->save();
+        return redirect(route('member.index'));
     }
 
     /**
