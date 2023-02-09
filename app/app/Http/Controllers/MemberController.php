@@ -36,7 +36,7 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $member_name = $request->input('name');
-        $member_phone_number = $request->input('phone_nuber');
+        $member_phone_number = $request->input('phone_number');
         $member_email_address = $request->input('email_address');
         $member_is_employed = $request->input('is_employed');
         $member_birthday = $request->input('birthday');
@@ -50,9 +50,8 @@ class MemberController extends Controller
             'birthday' => $member_birthday,
             'iban' => $member_iban,
         ]);
-        return response()->json([
-            'data' => new MemberResource($member)
-        ], 200);
+        // TODO: add try catch or something like that
+        return response("", 200);
     }
 
     /**
