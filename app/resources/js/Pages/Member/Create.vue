@@ -1,6 +1,19 @@
 <template>
   <v-container>
-    <Form :form="form" />
+    <v-row>
+      <v-col />
+      <v-col>
+        <v-card>
+          <v-card-title>
+            {{ form.id == null? 'Mitglied Hinzufügen' : 'Mitglied Bearbeiten' }}
+          </v-card-title>
+          <v-card-text>
+            <Form :form="form" @submit="submit()" />
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col />
+    </v-row>
   </v-container>
 </template>
 <script>
@@ -23,6 +36,11 @@ export default {
          form: this.$inertia.form({
             ...this.member
          })
+      }
+   },
+   methods: {
+      submit () {
+         this.$inertia.post(this.route('member.store'), this.form)
       }
    },
 }
