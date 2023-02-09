@@ -4,8 +4,6 @@
       <v-container
         fluid
       >
-        <Alert dismissible />
-        <flash-messages />
         <slot />
       </v-container>
       <Footer />
@@ -17,6 +15,5 @@
 
 export default {
    name: 'BasicLayout',
-
 }
 </script>
