@@ -1,21 +1,22 @@
 <template>
-<v-app>
-  <v-app-bar app></v-app-bar>
-
-  <v-main>
-    <v-container>
-      Hello World
-    </v-container>
-  </v-main>
-</v-app>
+  <v-app>
+    <v-main class="background">
+      <v-container
+        fluid
+      >
+        <Alert dismissible />
+        <flash-messages />
+        <slot />
+      </v-container>
+      <Footer />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
+
 export default {
+   name: 'BasicLayout',
 
 }
 </script>
-
-<style>
-
-</style>

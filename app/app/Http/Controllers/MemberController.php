@@ -14,7 +14,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return Member::all();
+        $members = Member::all();
+        return inertia("Member/Index.vue", compact('members'));
     }
 
     /**
