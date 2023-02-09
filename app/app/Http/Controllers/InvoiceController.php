@@ -34,7 +34,17 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $invoice_price = $request->input('price');
+        $invoice_description = $request->input('description');
+        $invoice_type = $request->input('invoice_type');
+
+        $invoice = Invoice::create([
+            'price' => $invoice_price,
+            'description' => $invoice_description,
+            'invoice_type' => $invoice_type
+        ]);
+        // TODO: add try catch or something like that
+        return response("", 200);
     }
 
     /**
@@ -45,7 +55,7 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        return Invoice::findOrFail($id);
     }
 
     /**

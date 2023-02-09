@@ -25,7 +25,13 @@ class AddressController extends Controller
     {
         //
     }
-
+    protected $fillable = [
+        'member_id',
+        'street',
+        'city',
+        'state',
+        'postal_code'
+    ];
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +40,21 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $address_member_id = $request->input('member_id');
+        $address_street = $request->input('street');
+        $address_city = $request->input('city');
+        $address_state = $request->input('state');
+        $address_postal_code = $request->input('postal_code');
+
+        $address = Address::create([
+            'member_id' => $address_member_id,
+            'street' => $address_street,
+            'city' => $address_city,
+            'state' => $address_state,
+            'postal_code' => $address_postal_code
+        ]);
+        // TODO: add try catch or something like that
+        return response("", 200);
     }
 
     /**
@@ -45,7 +65,7 @@ class AddressController extends Controller
      */
     public function show($id)
     {
-        //
+        return Address::findOrFail($id);
     }
 
     /**
