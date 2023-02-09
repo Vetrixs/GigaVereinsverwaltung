@@ -10,11 +10,11 @@ class Member extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 
-        'phone_number', 
-        'email_address', 
-        'is_employed', 
-        'birthday', 
+        'name',
+        'phone_number',
+        'email_address',
+        'is_employed',
+        'birthday',
         'iban'
     ];
 
