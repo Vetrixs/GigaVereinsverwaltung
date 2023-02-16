@@ -61,7 +61,7 @@ window.App = new Vue({
    vuetify,
    metaInfo: {
       title: 'Loading...',
-      titleTemplate: '%s • Warenlager',
+      titleTemplate: '%s • GigaVereinsverwaltung',
       changed (info) {
          window.App.goBack = info.goBack
          window.App.appTitle = info.titleChunk

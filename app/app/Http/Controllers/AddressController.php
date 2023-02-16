@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddressRequest;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
@@ -23,36 +25,26 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        $address = new Address([
+            'member_id' => null,
+            'street' => null,
+            'city' => null,
+            'state' => null,
+            'postal_code' => null
+        ]);
+        return inertia("Address/Create.vue", compact("address"));
     }
-    protected $fillable = [
-        'member_id',
-        'street',
-        'city',
-        'state',
-        'postal_code'
-    ];
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddressRequest $request)
     {
-        $address_member_id = $request->input('member_id');
-        $address_street = $request->input('street');
-        $address_city = $request->input('city');
-        $address_state = $request->input('state');
-        $address_postal_code = $request->input('postal_code');
-
-        $address = Address::create([
-            'member_id' => $address_member_id,
-            'street' => $address_street,
-            'city' => $address_city,
-            'state' => $address_state,
-            'postal_code' => $address_postal_code
-        ]);
+        $address = new Address($request->validate());
+        $address->save();
         // TODO: add try catch or something like that
         return response("", 200);
     }
@@ -60,7 +52,7 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,7 +63,7 @@ class AddressController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -82,8 +74,8 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,7 +86,7 @@ class AddressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
