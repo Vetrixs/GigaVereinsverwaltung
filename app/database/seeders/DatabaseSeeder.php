@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\Integer;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        $this->call([
-        ]);
+        for ($i = 0; $i <= 100; $i++) {
+            DB::table('members')->insert([
+                'name' => Str::random(10),
+                'phone_number' => 2054391235,
+                'email_address' => Str::random(10) . '@gmail.com',
+                'is_employed' => random_int(0, 1),
+                'birthday' => Date::create(2023, 1, 3, 0, 0, 0, 2),
+                'iban' => 1234567890
+            ]);
+        }
     }
 }
