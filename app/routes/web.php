@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 
 /*

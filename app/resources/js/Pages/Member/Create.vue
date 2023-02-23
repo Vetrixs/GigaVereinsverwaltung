@@ -5,7 +5,7 @@
       <v-col>
         <v-card>
           <v-card-title>
-            {{ form.id == null? 'Mitglied Hinzufügen' : 'Mitglied Bearbeiten' }}
+            {{ form.id == null ? 'Mitglied Hinzufügen' : 'Mitglied Bearbeiten' }}
           </v-card-title>
           <v-card-text>
             <Form :form="form" @submit="submit()" />
@@ -20,6 +20,7 @@
 
 import Layout from '@/Layout/main'
 import Form from '@/Components/Member/Form'
+
 export default {
    components: {
       Form
