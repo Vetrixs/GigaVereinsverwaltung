@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: GigaVereinsverwaltung
+    ports:
+      - "80:80"
+#    networks:
+#      - nginx
+#      - mariadb
+#
+#networks:
+#  nginx:
+#    external:
+#      name: nginx
+#  mariadb:
+#    external:
+#      name: mariadb
