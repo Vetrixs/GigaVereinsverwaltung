@@ -32,7 +32,11 @@ class MemberController extends Controller
             'email_address' => null,
             'iban' => null,
             'birthday' => null,
-            'is_employed' => false
+            'is_employed' => false,
+            'street' => null,
+            'city' => null,
+            'state' => null,
+            'postal_code' => null
         ]);
         return inertia("Member/Create.vue", compact("member"));
     }
@@ -90,7 +94,11 @@ class MemberController extends Controller
             'email_address' => $request->input('email_address'),
             'iban' => $request->input('iban'),
             'birthday' => $request->input('birthday'),
-            'is_employed' => $request->input('is_employed')
+            'is_employed' => $request->input('is_employed'),
+            'street' => $request->input('street'),
+            'city' => $request->input('city'),
+            'state' => $request->input('state'),
+            'postal_code' => $request->input('postal_code')
         ]);
     }
 
