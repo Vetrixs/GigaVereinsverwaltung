@@ -70,7 +70,7 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("Viewfile", compact("member"));
     }
 
     /**
@@ -82,7 +82,16 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $member = Member::find($id);
+
+        $member->update([
+            'name' => $request->input('name'),
+            'phone_number' => $request->input('phone_number'),
+            'email_address' => $request->input('email_address'),
+            'iban' => $request->input('iban'),
+            'birthday' => $request->input('birthday'),
+            'is_employed' => $request->input('is_employed')
+        ]);
     }
 
     /**
