@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-f ref="form" orm>
+    <v-form ref="form">
       <v-text-field
         v-model="form.name"
         prepend-icon="mdi-card-account-details-outline"
@@ -74,7 +74,7 @@
       <v-btn @click="submit()">
         Speichern
       </v-btn>
-    </v-f>
+    </v-form>
   </v-container>
 </template>
 <script>

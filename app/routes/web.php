@@ -16,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::name('member.')->group(function(){
-    Route::resource('/',MemberController::class);
+    Route::get('','App\Http\Controllers\MemberController@index')->name('index');
+    Route::get('/create','App\Http\Controllers\MemberController@create')->name('create');
+    Route::post('/store','App\Http\Controllers\MemberController@store')->name('store');
+    Route::get('/edit/{member}','App\Http\Controllers\MemberController@edit')->name('edit');
+    Route::patch('/update/{member}','App\Http\Controllers\MemberController@update')->name('update');
 });

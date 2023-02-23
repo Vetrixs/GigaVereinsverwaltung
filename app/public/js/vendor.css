@@ -20297,13 +20297,6 @@ html.overflow-y-hidden {
 .v-text-field.v-input--has-state > .v-input__control > .v-input__slot:before {
   border-color: currentColor;
 }
-.v-text-field .v-input__icon--clear {
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-}
-.v-text-field.v-input--is-focused .v-input__icon--clear, .v-text-field.v-input--is-dirty:hover .v-input__icon--clear {
-  opacity: 1;
-}
 /* Theme */
 .theme--light.v-input {
   color: rgba(0, 0, 0, 0.87);
@@ -20420,16 +20413,19 @@ html.overflow-y-hidden {
 }
 .v-input__slot {
   align-items: center;
+  color: inherit;
   display: flex;
   margin-bottom: 8px;
   min-height: inherit;
   position: relative;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-  transition-property: height, min-height;
   width: 100%;
 }
 .v-input--dense > .v-input__control > .v-input__slot {
   margin-bottom: 4px;
+}
+.v-input--is-disabled:not(.v-input--is-readonly) {
+  pointer-events: none;
 }
 .v-input--is-loading > .v-input__control > .v-input__slot:before, .v-input--is-loading > .v-input__control > .v-input__slot:after {
   display: none;
@@ -21043,9 +21039,6 @@ html.overflow-y-hidden {
 .v-input--selection-controls.v-input--is-disabled:not(.v-input--indeterminate) .v-icon {
   color: inherit;
 }
-.v-input--selection-controls.v-input--is-disabled:not(.v-input--is-readonly) {
-  pointer-events: none;
-}
 
 .v-input--selection-controls__input:hover .v-input--selection-controls__ripple:before {
   background: currentColor;
@@ -21278,7 +21271,7 @@ html.overflow-y-hidden {
   display: flex;
   flex: 1 0 auto;
   min-width: 100% !important;
-  max-width: none;
+  max-width: auto;
 }
 
 .v-btn--is-elevated {
@@ -21942,6 +21935,7 @@ html.overflow-y-hidden {
 .v-select.v-text-field input {
   flex: 1 1;
   min-width: 0;
+  pointer-events: none;
   position: relative;
 }
 .v-select.v-text-field:not(.v-text-field--single-line) input {
@@ -21980,9 +21974,6 @@ html.overflow-y-hidden {
 .v-select.v-text-field--reverse .v-select__slot,
 .v-select.v-text-field--reverse .v-select__selections {
   flex-direction: row-reverse;
-}
-.v-select.v-input--is-disabled:not(.v-input--is-readonly):not(.v-autocomplete) {
-  pointer-events: none;
 }
 .v-select__selections {
   align-items: center;
@@ -22837,7 +22828,7 @@ html.overflow-y-hidden {
 }
 
 .v-chip--pill .v-chip__filter {
-  margin: 0 16px 0 0;
+  margin-right: 0 16px 0 0;
 }
 .v-chip--pill .v-avatar {
   height: 32px !important;

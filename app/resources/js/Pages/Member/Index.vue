@@ -7,16 +7,33 @@
       :search="search"
     >
       <template #top>
-        <v-text-field
-          v-model="search"
-          label="Search"
-          class="mx-4"
-        />
+        <v-row>
+          <v-col>
+            <v-text-field
+              v-model="search"
+              label="Search"
+              class="mx-4"
+            />
+          </v-col>
+          <v-col cols="2">
+            <inertia-link :href="route('member.create')">
+              <v-btn prepend-icon="mdi-add" variant="tonal,">
+                add
+              </v-btn>
+            </inertia-link>
+          </v-col>
+        </v-row>
+      </template>
+      <template #[`item.actions`]="{ item }">
+        <div>
+          <inertia-link :href="route('member.edit', {member:item.id})">
+            <v-icon>
+              mdi-pen
+            </v-icon>
+          </inertia-link>
+        </div>
       </template>
     </v-data-table>
-    <v-btn prepend-icon="mdi-add" variant="tonal," @click="add()">
-      add
-    </v-btn>
   </v-container>
 </template>
 <script>
@@ -46,13 +63,14 @@ export default {
             { text: 'Stadt', value: 'city' },
             { text: 'Bundesland', value: 'state' },
             { text: 'Postleitzahl', value: 'postal_code' },
+            { text: 'Aktionen', value: 'actions' }
          ]
       }
    },
    methods: {
-      add () {
-         window.location.href = 'http://gigavereinsverwaltung.test/create'
-      }
+      // add () {
+      //    window.location.href = 'http://gigavereinsverwaltung.test/create'
+      // }
    }
 }
 </script>

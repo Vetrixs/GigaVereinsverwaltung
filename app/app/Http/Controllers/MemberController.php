@@ -62,9 +62,9 @@ class MemberController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Member $member)
     {
-        return Member::findOrFail($id);
+        return $member;
     }
 
     /**
@@ -73,9 +73,9 @@ class MemberController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Member $member)
     {
-        return view("Viewfile", compact("member"));
+        return inertia("Member/Edit.vue", compact("member"));
     }
 
     /**
@@ -85,22 +85,10 @@ class MemberController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MemberRequest $request, Member $member)
     {
-        $member = Member::find($id);
-
-        $member->update([
-            'name' => $request->input('name'),
-            'phone_number' => $request->input('phone_number'),
-            'email_address' => $request->input('email_address'),
-            'iban' => $request->input('iban'),
-            'birthday' => $request->input('birthday'),
-            'is_employed' => $request->input('is_employed'),
-            'street' => $request->input('street'),
-            'city' => $request->input('city'),
-            'state' => $request->input('state'),
-            'postal_code' => $request->input('postal_code')
-        ]);
+        $member->update($request->validated());
+        return redirect(route('member.index'));
     }
 
     /**
@@ -109,8 +97,9 @@ class MemberController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Member $member)
     {
-        //
+        $member->delete();
+        return redirect(route('member.index'));
     }
 }
