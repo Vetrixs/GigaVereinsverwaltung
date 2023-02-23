@@ -25,11 +25,15 @@ class MemberRequest extends FormRequest
     {
         return [
             'name' => 'string|required',
-            'phone_number' =>'string|required',
+            'phone_number' => 'string|required',
             'email_address' => 'email:rfc',
             'is_employed' => 'boolean',
             'iban' => 'string|required',
-            'birthday' => 'date|required'
+            'birthday' => 'date|required',
+            'street' => 'string|required',
+            'city' => 'string|required',
+            'state' => 'string|required',
+            'postal_code' => 'int|required'
         ];
     }
 }

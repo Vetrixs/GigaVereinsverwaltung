@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-form ref="form">
+    <v-f ref="form" orm>
       <v-text-field
         v-model="form.name"
         prepend-icon="mdi-card-account-details-outline"
@@ -43,10 +43,38 @@
         label="Arbeitet"
         required
       />
+      <v-text-field
+        v-model="form.street"
+        prepend-icon="mdi-home-outline"
+        :rules="[v => !!v||'Pflichtfeld']"
+        label="Street"
+        required
+      />
+      <v-text-field
+        v-model="form.city"
+        prepend-icon="mdi-location_city-outline"
+        :rules="[v => !!v||'Pflichtfeld']"
+        label="City"
+        required
+      />
+      <v-text-field
+        v-model="form.state"
+        prepend-icon="mdi-location_city-outline"
+        :rules="[v => !!v||'Pflichtfeld']"
+        label="State"
+        required
+      />
+      <v-text-field
+        v-model="form.postal_code"
+        prepend-icon="mdi-location_city-outline"
+        :rules="[v => !!v||'Pflichtfeld']"
+        label="Postal Code"
+        required
+      />
       <v-btn @click="submit()">
         Speichern
       </v-btn>
-    </v-form>
+    </v-f>
   </v-container>
 </template>
 <script>

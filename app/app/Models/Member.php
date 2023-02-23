@@ -16,13 +16,12 @@ class Member extends Model
         'email_address',
         'is_employed',
         'birthday',
-        'iban'
+        'iban',
+        'street',
+        'city',
+        'state',
+        'postal_code'
     ];
-
-    public function address()
-    {
-        return $this->hasOne(Address::class);
-    }
 
     public function invoices(){
         return $this->hasMany(Invoice::class);

@@ -14,11 +14,15 @@
         />
       </template>
     </v-data-table>
+    <v-btn prepend-icon="mdi-add" variant="tonal," @click="add()">
+      add
+    </v-btn>
   </v-container>
 </template>
 <script>
 
 import Layout from '@/Layout/main'
+
 export default {
    layout: (h, page) => h(Layout, [page]),
    props: { // Data from the Controller is Imutable
@@ -37,8 +41,18 @@ export default {
             { text: 'E-Mail', value: 'email_address' },
             { text: 'Arbeitet', value: 'is_employed' },
             { text: 'Geburtstag', value: 'birthday' },
+            { text: 'Iban', value: 'iban' },
+            { text: 'Straße', value: 'street' },
+            { text: 'Stadt', value: 'city' },
+            { text: 'Bundesland', value: 'state' },
+            { text: 'Postleitzahl', value: 'postal_code' },
          ]
       }
    },
+   methods: {
+      add () {
+         window.location.href = 'http://gigavereinsverwaltung.test/create'
+      }
+   }
 }
 </script>

@@ -18,7 +18,3 @@ use Illuminate\Support\Facades\Route;
 Route::name('member.')->group(function(){
     Route::resource('/',MemberController::class);
 });
-
-Route::name('address.')->group(function(){
-    Route::resource('/address',AddressController::class);
-});

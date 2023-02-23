@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/greeting', function () {
-    return 'Hello World';
-});
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
      return $request->user();
 });
@@ -28,8 +24,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('member', [MemberController::class, 'index'])->name('member.index');
 Route::get('member/{id}', [MemberController::class, 'show'])->name('member.show');
 Route::post('member', [MemberController::class, 'store'])->name('member.store');
-
-
-Route::get('address', [AddressController::class, 'create'])->name('address.create');
-Route::get('address/{id}', [AddressController::class, 'show'])->name('address.show');
-Route::post('address', [AddressController::class, 'store'])->name('address.store');

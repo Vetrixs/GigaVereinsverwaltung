@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
                 'phone_number' => 2054391235,
                 'email_address' => Str::random(10) . '@gmail.com',
                 'is_employed' => random_int(0, 1),
-                'birthday' => Date::create(2023, 1, 3, 0, 0, 0, 2),
+                'birthday' => Date::create(2023, random_int(0, 12), random_int(0, 28), 0, 0, 0, 2),
                 'iban' => 1234567890
             ]);
         }
