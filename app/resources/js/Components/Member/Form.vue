@@ -40,7 +40,7 @@
       <v-checkbox
         v-model="form.is_employed"
         prepend-icon="mdi-briefcase"
-        label="Arbeitet"
+        label="Vollpreis"
         required
       />
       <v-text-field
