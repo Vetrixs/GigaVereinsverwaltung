@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InvoiceRequest;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 
@@ -33,19 +34,11 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InvoiceRequest $request)
     {
-        $invoice_price = $request->input('price');
-        $invoice_description = $request->input('description');
-        $invoice_type = $request->input('invoice_type');
-
-        $invoice = Invoice::create([
-            'price' => $invoice_price,
-            'description' => $invoice_description,
-            'invoice_type' => $invoice_type
-        ]);
-        // TODO: add try catch or something like that
-        return response("", 200);
+        $invoice = new Invoice($request->validated());
+        $invoice->save();
+        return redirect(route('invoice.index'));
     }
 
     /**
